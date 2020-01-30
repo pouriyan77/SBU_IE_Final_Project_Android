@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">CrisisManaging</string>
+    <string name="latLongStr">طول جغرافیایی : %s, عرض جغرافیایی : %s</string>
 </resources>
