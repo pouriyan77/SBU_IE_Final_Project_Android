@@ -69,7 +69,7 @@ public class FillFormActivity extends AppCompatActivity implements FillFormActiv
 
     private String formDescriptorId;
     private FillFormActivityContract.Presenter presenter;
-    private List<ViewAndKey> viewAndKeyList;
+    private List<ViewAndKey> viewAndKeyList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -80,12 +80,11 @@ public class FillFormActivity extends AppCompatActivity implements FillFormActiv
         setupIntent();
         findViews();
         setupToolbar();
-        presenter.getFormDescriptorFromServer(formDescriptorId);
+        getFormDescriptorsFromServer(formDescriptorId);
     }
 
     private void generateForm(List<Field> fields)
     {
-        viewAndKeyList = new ArrayList<>();
         for (Field field : fields)
         {
             ViewAndKey viewAndKey = new ViewAndKey();
@@ -222,7 +221,14 @@ public class FillFormActivity extends AppCompatActivity implements FillFormActiv
         refreshFormBtn.setOnClickListener(v -> refreshForm());
         progressBar = findViewById(R.id.progressBar);
         retryBtn = findViewById(R.id.retryBtn);
-        retryBtn.setOnClickListener(v -> presenter.getFormDescriptorFromServer(formDescriptorId));
+        retryBtn.setOnClickListener(v -> getFormDescriptorsFromServer(formDescriptorId));
+    }
+
+    private void getFormDescriptorsFromServer(String formDescriptorId)
+    {
+        progressBar.setVisibility(View.VISIBLE);
+        retryBtn.setVisibility(View.GONE);
+        presenter.getFormDescriptorFromServer(formDescriptorId);
     }
 
     private void refreshForm()
