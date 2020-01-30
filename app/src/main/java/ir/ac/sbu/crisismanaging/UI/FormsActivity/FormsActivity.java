@@ -100,4 +100,10 @@ public class FormsActivity extends AppCompatActivity implements FormsActivityCon
     {
         retryBtn.setVisibility(View.VISIBLE);
     }
+
+    @Override
+    public void onBackPressed()
+    {
+        finishAffinity();
+    }
 }
