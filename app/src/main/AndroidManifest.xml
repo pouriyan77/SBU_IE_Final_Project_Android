@@ -22,7 +22,7 @@
             android:name=".UI.FormsActivity.FormsActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".UI.SplashActivity"
+            android:name=".UI.SplashActivity.SplashActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

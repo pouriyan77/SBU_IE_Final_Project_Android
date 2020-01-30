@@ -1,4 +1,4 @@
-package ir.ac.sbu.crisismanaging.UI;
+package ir.ac.sbu.crisismanaging.UI.SplashActivity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import ir.ac.sbu.crisismanaging.Pojos.Form;

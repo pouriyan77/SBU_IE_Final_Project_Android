@@ -8,6 +8,7 @@ import ir.ac.sbu.crisismanaging.Pojos.FormDescriptor;
 import ir.ac.sbu.crisismanaging.Pojos.Location;
 import ir.ac.sbu.crisismanaging.R;
 import ir.ac.sbu.crisismanaging.UI.GoogleMapActivity.GoogleMapActivity;
+import ir.ac.sbu.crisismanaging.UI.SelectOptionDialog.SelectOptionDialog;
 import ir.ac.sbu.crisismanaging.Utils.JDF;
 import ir.ac.sbu.crisismanaging.Utils.UiUtils;
 import ir.hamsaa.persiandatepicker.Listener;
@@ -143,6 +144,15 @@ public class FillFormActivity extends AppCompatActivity implements FillFormActiv
                             startActivityForResult(intent, LOCATION_REQUEST_CODE);
                         }
                     });
+            }
+            if (field.getOptions() != null && !field.getOptions().isEmpty())
+            {
+                editText.setFocusable(false);
+                editText.setOnClickListener(v -> {
+                    SelectOptionDialog selectOptionDialog = new SelectOptionDialog(field.getTitle(),
+                            field.getOptions(), editText);
+                    selectOptionDialog.show(getSupportFragmentManager(), null);
+                });
             }
             textInputLayout.addView(editText);
             fieldsLinearLayout.addView(space);
